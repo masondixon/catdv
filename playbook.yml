@@ -1,0 +1,33 @@
+---
+# My Ansible playbook.
+- hosts: all
+
+  vars:
+    ansible_become_pass: vagrant
+
+  tasks:
+    - name: "Example copying file with owner and permissions"
+      copy: 
+        dest: /usr/local/bin/file_matcher.py
+        group: root
+        mode: 600
+        owner: root
+        src: ./file_matcher.py
+      become: true
+      become_method: su
+      
+    - name: "Create directory structure and seed data"
+      copy: 
+        dest: /tmp/seed_data.sh
+        group: root
+        mode: 600
+        owner: root
+        src: ./seed_data.sh
+      become: true
+      become_method: su
+    
+    - name: "Execute seed_data.sh script"
+      shell: /tmp/seed_data.sh
+      become: true
+      become_method: su
+      
