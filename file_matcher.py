@@ -9,8 +9,7 @@ log_file_path = '/var/log/filematcher/'
 xml_files_created = {'count': 0, 'file_names': []}
 errors = {'count': 0, 'error_details': []}
 
-dev_mnt_point = "/tmp/patients"
-production_mnt_point = "/mnt/IES_CAPTURE/AIDI"
+mnt_point = "/mnt/IES_CAPTURE/AIDI"
 
 def process_dirs(dir_path):
     
@@ -62,7 +61,7 @@ def create_log_directory():
 if __name__ == '__main__':
     try:
         create_log_directory()
-        process_dirs(dev_mnt_point)
+        process_dirs(mnt_point)
         
         logging.info("New xml file(s) count:" + str(xml_files_created['count']))
         for name in xml_files_created['file_names']:

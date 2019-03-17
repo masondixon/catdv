@@ -6,7 +6,7 @@
     ansible_become_pass: vagrant
 
   tasks:
-    - name: "Example copying file with owner and permissions"
+    - name: "Copy fil_matcher to vagrant vm"
       copy: 
         dest: /usr/local/bin/file_matcher.py
         group: root
@@ -16,7 +16,7 @@
       become: true
       become_method: su
       
-    - name: "Create directory structure and seed data"
+    - name: "Create directory structure and seed data via shell script"
       copy: 
         dest: /tmp/seed_data.sh
         group: root
